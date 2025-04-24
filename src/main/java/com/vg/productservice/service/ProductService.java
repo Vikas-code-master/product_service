@@ -17,7 +17,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Product updateProduct(String productId, Product updatedProduct) {
+    public Product updateProduct(Integer productId, Product updatedProduct) {
         Product existingProduct = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
         existingProduct.setName(updatedProduct.getName());
@@ -27,7 +27,7 @@ public class ProductService {
         return productRepository.save(existingProduct);
     }
 
-    public Product getProductById(String productId) {
+    public Product getProductById(Integer productId) {
         return productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
     }
@@ -36,7 +36,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void deleteProduct(String productId) {
+    public void deleteProduct(Integer productId) {
         productRepository.deleteById(productId);
     }
 }

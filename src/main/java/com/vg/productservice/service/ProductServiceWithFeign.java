@@ -23,7 +23,7 @@ public class ProductServiceWithFeign {
         return productRepository.save(product);
     }
 
-    public Object getProductWithOrderDetails(String productId, String orderId) {
+    public Object getProductWithOrderDetails(Integer productId, Integer orderId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
         Object orderDetails = orderClient.getOrderDetails(orderId);
@@ -33,7 +33,7 @@ public class ProductServiceWithFeign {
         };
     }
 
-    public Object getProductWithUserDetails(String productId, String userId) {
+    public Object getProductWithUserDetails(Integer productId, Integer userId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
         Object userDetails = userClient.getUserDetails(userId);

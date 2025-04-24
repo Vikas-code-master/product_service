@@ -25,12 +25,12 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable String id, @RequestBody @Valid Product product) {
+    public Product updateProduct(@PathVariable int id, @RequestBody @Valid Product product) {
         return productService.updateProduct(id, product);
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable String id) {
+    public Product getProductById(@PathVariable int id) {
         return productService.getProductById(id);
     }
 
@@ -40,17 +40,17 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable String id) {
+    public void deleteProduct(@PathVariable int id) {
         productService.deleteProduct(id);
     }
 
     @GetMapping("/{id}/order/{orderId}")
-    public Object getProductWithOrderDetails(@PathVariable String id, @PathVariable String orderId) {
-        return productServiceWithFeign.getProductWithOrderDetails(id, orderId);
+    public Object getProductWithOrderDetails(@PathVariable int id, @PathVariable int orderId) {
+        return productServiceWithFeign. getProductWithOrderDetails(id, orderId);
     }
 
     @GetMapping("/{id}/user/{userId}")
-    public Object getProductWithUserDetails(@PathVariable String id, @PathVariable String userId) {
+    public Object getProductWithUserDetails(@PathVariable int id, @PathVariable int userId) {
         return productServiceWithFeign.getProductWithUserDetails(id, userId);
     }
 
